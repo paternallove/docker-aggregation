@@ -12,8 +12,8 @@ services:
     hostname: quickstart.cloudera
     privileged: true
     mem_limit: 10g
-    image: paternallove/cloudera-manager:latest
-    # image: cloudera/quickstart:latest
+    # image: paternallove/cloudera-manager:latest
+    image: cloudera/quickstart:latest
     networks:
       myhadoopbr:
         ipv4_address: 192.168.56.101
