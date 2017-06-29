@@ -12,8 +12,8 @@ services:
     hostname: quickstart.cloudera
     privileged: true
     mem_limit: 10g
-    # image: paternallove/cloudera-manager:latest
-    image: cloudera/quickstart:latest
+    image: paternallove/cloudera-manager:latest
+    # image: cloudera/quickstart:latest
     networks:
       myhadoopbr:
         ipv4_address: 192.168.56.101
@@ -41,7 +41,7 @@ services:
     hostname: server02.hadoop.com
     mem_limit: 10g
     #image: paternallove/centos9.8-hadoop:latest
-    image: paternallove/cloudera-host:latest
+    image: paternallove/cloudera-host02:latest
     networks:
       myhadoopbr:
         ipv4_address: 192.168.56.102
@@ -64,7 +64,7 @@ services:
     hostname: server03.hadoop.com
     mem_limit: 10g
     # image: paternallove/centos9.8-hadoop:latest
-    image: paternallove/cloudera-host:latest
+    image: paternallove/cloudera-host03:latest
     networks:
       myhadoopbr:
         ipv4_address: 192.168.56.103
