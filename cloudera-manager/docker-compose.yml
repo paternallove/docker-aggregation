@@ -8,8 +8,8 @@ version: '2'
 services:
   hadoop01:
     container_name: hadoop01
-    # hostname: server01.hadoop.com
-    hostname: quickstart.cloudera
+    hostname: server01.hadoop.com
+    # hostname: quickstart.cloudera
     privileged: true
     mem_limit: 10g
     # image: paternallove/cloudera-manager:latest
