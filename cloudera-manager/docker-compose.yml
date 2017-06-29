@@ -19,7 +19,7 @@ services:
         ipv4_address: 192.168.56.101
     extra_hosts:
       - "quickstart.cloudera:192.168.56.101"
-      - "server01.hadoop.com:192.168.56.101"
+      # - "server01.hadoop.com:192.168.56.101"
       - "server02.hadoop.com:192.168.56.102"
       - "server03.hadoop.com:192.168.56.103"
     tty: true
@@ -47,8 +47,8 @@ services:
         ipv4_address: 192.168.56.102
     extra_hosts:
       - "quickstart.cloudera:192.168.56.101"
-      - "server01.hadoop.com:192.168.56.101"
-      - "server02.hadoop.com:192.168.56.102"
+      # - "server01.hadoop.com:192.168.56.101"
+      # - "server02.hadoop.com:192.168.56.102"
       - "server03.hadoop.com:192.168.56.103"
     depends_on:
       - hadoop01
@@ -70,9 +70,9 @@ services:
         ipv4_address: 192.168.56.103
     extra_hosts:
       - "quickstart.cloudera:192.168.56.101"
-      - "server01.hadoop.com:192.168.56.101"
+      # - "server01.hadoop.com:192.168.56.101"
       - "server02.hadoop.com:192.168.56.102"
-      - "server03.hadoop.com:192.168.56.103"
+      # - "server03.hadoop.com:192.168.56.103"
     depends_on:
       - hadoop02
     tty: true
