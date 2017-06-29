@@ -23,8 +23,8 @@ services:
       - "server02.hadoop.com:192.168.56.102"
       - "server03.hadoop.com:192.168.56.103"
     tty: true
-    # command: bash -c "/usr/bin/docker-quickstart & /home/cloudera/cloudera-manager --enterprise & /bin/bash"
-    command: bash -c "/home/cloudera/cloudera-manager --enterprise & /bin/bash"
+    command: bash -c "/usr/bin/docker-quickstart & /home/cloudera/cloudera-manager --enterprise & /bin/bash"
+    # command: bash -c "/home/cloudera/cloudera-manager --enterprise & /bin/bash"
     ports:
       - 8888:8888
       - 7180:7180
