@@ -1,10 +1,15 @@
 version: '2'
 
 # docker run --hostname=quickstart.cloudera --privileged=true -m 10g -t -d -i -p 8888:8888 -p 80:80 -p 7180:7180 cloudera/quickstart:latest /usr/bin/docker-quickstart
+# docker run --hostname=quickstart.cloudera --privileged=true -m 10g -t -d -i -p 8888:8888 -p 10080:80 -p 17180:7180 cloudera/quickstart:latest /usr/bin/docker-quickstart
+# docker run --hostname=server01.hadoop.com --privileged=true -m 10g -t -d -i -p 8888:8888 -p 10080:80 -p 17180:7180 cloudera/quickstart:latest /usr/bin/docker-quickstart
+# docker run --hostname=server01.hadoop.com --privileged=true -m 10g -t -d -i -p 18888:8888 -p 10080:80 -p 17180:7180 cloudera/quickstart:latest /bin/bash -c "/usr/bin/docker-quickstart & /home/cloudera/cloudera-manager --enterprise"
+
 services:
   hadoop01:
     container_name: hadoop01
-    hostname: server01.hadoop.com
+    # hostname: server01.hadoop.com
+    hostname: quickstart.cloudera
     privileged: true
     mem_limit: 10g
     image: cloudera/quickstart:latest
@@ -12,6 +17,7 @@ services:
       myhadoopbr:
         ipv4_address: 192.168.56.101
     extra_hosts:
+      - "quickstart.cloudera:192.168.56.101"
       - "server01.hadoop.com:192.168.56.101"
       - "server02.hadoop.com:192.168.56.102"
       - "server03.hadoop.com:192.168.56.103"
@@ -20,7 +26,7 @@ services:
     ports:
       - 8888:8888
       - 7180:7180
-      - 8880:80
+      - 80:80
     # command: bash -c "service sshd start"
     # command: /etc/init.d/sshd restart
     # links:
@@ -37,6 +43,7 @@ services:
       myhadoopbr:
         ipv4_address: 192.168.56.102
     extra_hosts:
+      - "quickstart.cloudera:192.168.56.101"
       - "server01.hadoop.com:192.168.56.101"
       - "server02.hadoop.com:192.168.56.102"
       - "server03.hadoop.com:192.168.56.103"
@@ -58,6 +65,7 @@ services:
       myhadoopbr:
         ipv4_address: 192.168.56.103
     extra_hosts:
+      - "quickstart.cloudera:192.168.56.101"
       - "server01.hadoop.com:192.168.56.101"
       - "server02.hadoop.com:192.168.56.102"
       - "server03.hadoop.com:192.168.56.103"
