@@ -4,7 +4,7 @@ services:
   hadoop01:
     container_name: hadoop01
     hostname: server01.hadoop.com
-    image: paternallove/centos9.8-hadoop:latest
+    image: paternallove/centos6.8-hadoop:latest
     networks:
       myhadoopbr:
         ipv4_address: 192.168.56.101
@@ -26,7 +26,7 @@ services:
   hadoop02:
     container_name: hadoop02
     hostname: server02.hadoop.com
-    image: paternallove/centos9.8-hadoop:latest
+    image: paternallove/centos6.8-hadoop:latest
     networks:
       myhadoopbr:
         ipv4_address: 192.168.56.102
@@ -46,7 +46,7 @@ services:
   hadoop03:
     container_name: hadoop03
     hostname: server03.hadoop.com
-    image: paternallove/centos9.8-hadoop:latest
+    image: paternallove/centos6.8-hadoop:latest
     networks:
       myhadoopbr:
         ipv4_address: 192.168.56.103
