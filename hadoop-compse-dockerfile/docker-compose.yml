@@ -1,5 +1,6 @@
 version: '2'
 
+# docker run -d --hostname=master --privileged=true --name=master cdh-master
 services:
   hadoop01:
     container_name: hadoop01
