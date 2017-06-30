@@ -12,6 +12,7 @@ services:
       - "server01.hadoop.com:192.168.56.101"
       - "server02.hadoop.com:192.168.56.102"
       - "server03.hadoop.com:192.168.56.103"
+    privileged: true
     tty: true
     #expose:
     #  - 22
@@ -36,6 +37,7 @@ services:
       - "server03.hadoop.com:192.168.56.103"
     depends_on:
       - hadoop01
+    privileged: true
     tty: true
     command: bash -c "/bin/bash"
     # links:
@@ -56,6 +58,7 @@ services:
       - "server03.hadoop.com:192.168.56.103"
     depends_on:
       - hadoop02
+    privileged: true
     tty: true
     command: bash -c "/bin/bash"
     # links:
