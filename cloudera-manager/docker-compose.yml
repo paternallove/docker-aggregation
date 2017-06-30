@@ -8,7 +8,7 @@ version: '2'
 services:
   hadoop01:
     container_name: hadoop01
-    # hostname: server01.hadoop.com
+    #hostname: server01.hadoop.com
     hostname: quickstart.cloudera
     privileged: true
     mem_limit: 10g
@@ -18,12 +18,13 @@ services:
       myhadoopbr:
         ipv4_address: 192.168.56.101
     extra_hosts:
-      - "quickstart.cloudera:192.168.56.101"
-      - "server01.hadoop.com:192.168.56.101"
+      # - "quickstart.cloudera:192.168.56.101"
+      # - "server01.hadoop.com:192.168.56.101"
       - "server02.hadoop.com:192.168.56.102"
       - "server03.hadoop.com:192.168.56.103"
     tty: true
     command: bash -c "/usr/bin/docker-quickstart & /home/cloudera/cloudera-manager --enterprise & /bin/bash"
+    # command: bash -c "/home/cloudera/cloudera-manager --enterprise & /bin/bash"
     ports:
       - 8888:8888
       - 7180:7180
@@ -39,14 +40,15 @@ services:
     container_name: hadoop02
     hostname: server02.hadoop.com
     mem_limit: 10g
-    image: paternallove/centos9.8-hadoop:latest
+    #image: paternallove/centos9.8-hadoop:latest
+    image: paternallove/cloudera-host02:latest
     networks:
       myhadoopbr:
         ipv4_address: 192.168.56.102
     extra_hosts:
       - "quickstart.cloudera:192.168.56.101"
-      - "server01.hadoop.com:192.168.56.101"
-      - "server02.hadoop.com:192.168.56.102"
+      # - "server01.hadoop.com:192.168.56.101"
+      # - "server02.hadoop.com:192.168.56.102"
       - "server03.hadoop.com:192.168.56.103"
     depends_on:
       - hadoop01
@@ -61,15 +63,16 @@ services:
     container_name: hadoop03
     hostname: server03.hadoop.com
     mem_limit: 10g
-    image: paternallove/centos9.8-hadoop:latest
+    # image: paternallove/centos9.8-hadoop:latest
+    image: paternallove/cloudera-host03:latest
     networks:
       myhadoopbr:
         ipv4_address: 192.168.56.103
     extra_hosts:
       - "quickstart.cloudera:192.168.56.101"
-      - "server01.hadoop.com:192.168.56.101"
+      # - "server01.hadoop.com:192.168.56.101"
       - "server02.hadoop.com:192.168.56.102"
-      - "server03.hadoop.com:192.168.56.103"
+      # - "server03.hadoop.com:192.168.56.103"
     depends_on:
       - hadoop02
     tty: true
