@@ -5,8 +5,8 @@ services:
   hadoop01:
     container_name: hadoop01
     hostname: server01.hadoop.com
-    image: paternallove/cloudera-hadoop-master:latest
-    # image: paternallove/centos6.8-hadoop:latest
+    # image: paternallove/cloudera-hadoop-master:latest
+    image: paternallove/centos6.8-hadoop:latest
     networks:
       myhadoopbr:
         ipv4_address: 192.168.56.101
@@ -18,8 +18,8 @@ services:
     tty: true
     #expose:
     #  - 22
-    command: bash -c "exec /sk/start.sh & service cloudera-scm-server start & /bin/bash"
-    # command: bash -c "exec /sk/start.sh & /bin/bash"
+    # command: bash -c "exec /sk/start.sh & service cloudera-scm-server start & /bin/bash"
+    command: bash -c "exec /sk/start.sh & /bin/bash"
     ports:
       - 7180:7180
     # command: bash -c "service sshd start"
