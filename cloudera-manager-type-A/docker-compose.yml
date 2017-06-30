@@ -1,0 +1,82 @@
+version: '2'
+
+# docker run -d --hostname=master --privileged=true --name=master cdh-master
+services:
+  hadoop01:
+    container_name: hadoop01
+    hostname: server01.hadoop.com
+    image: paternallove/cloudera-hadoop-master:latest
+    # image: paternallove/centos6.8-hadoop:latest
+    networks:
+      myhadoopbr:
+        ipv4_address: 192.168.56.101
+    extra_hosts:
+      - "server01.hadoop.com:192.168.56.101"
+      - "server02.hadoop.com:192.168.56.102"
+      - "server03.hadoop.com:192.168.56.103"
+    privileged: true
+    tty: true
+    #expose:
+    #  - 22
+    command: bash -c "exec /sk/start.sh & service cloudera-scm-server start & /bin/bash"
+    # command: bash -c "exec /sk/start.sh & /bin/bash"
+    ports:
+      - 7180:7180
+    # command: bash -c "service sshd start"
+    # command: /etc/init.d/sshd restart
+    # links:
+    #   - hadoop01
+    #   - hadoop02
+    #   - hadoop03
+
+  hadoop02:
+    container_name: hadoop02
+    hostname: server02.hadoop.com
+    image: paternallove/cloudera-hadoop-slave:latest
+    # image: paternallove/centos6.8-hadoop:latest
+    networks:
+      myhadoopbr:
+        ipv4_address: 192.168.56.102
+    extra_hosts:
+      - "server01.hadoop.com:192.168.56.101"
+      - "server02.hadoop.com:192.168.56.102"
+      - "server03.hadoop.com:192.168.56.103"
+    depends_on:
+      - hadoop01
+    privileged: true
+    tty: true
+    command: bash -c "/bin/bash"
+    # links:
+    #   - hadoop01
+    #   - hadoop02
+    #   - hadoop03
+
+  hadoop03:
+    container_name: hadoop03
+    hostname: server03.hadoop.com
+    image: paternallove/cloudera-hadoop-slave:latest
+    # image: paternallove/centos6.8-hadoop:latest
+    networks:
+      myhadoopbr:
+        ipv4_address: 192.168.56.103
+    extra_hosts:
+      - "server01.hadoop.com:192.168.56.101"
+      - "server02.hadoop.com:192.168.56.102"
+      - "server03.hadoop.com:192.168.56.103"
+    depends_on:
+      - hadoop02
+    privileged: true
+    tty: true
+    command: bash -c "/bin/bash"
+    # links:
+    #   - hadoop01
+    #   - hadoop02
+    #   - hadoop03
+
+networks:
+  myhadoopbr:
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 192.168.56.0/24
+         gateway: 192.168.56.1
